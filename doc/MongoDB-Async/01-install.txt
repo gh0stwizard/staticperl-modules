@@ -1,0 +1,10 @@
+install DateTime boolean
+install Test::Exception Test::Deep 
+install Test::LeakTrace Test::Requires
+install JSON::XS JSON
+install Tie::IxHash Data::Types Class::Method::Modifiers File::Slurp
+install Mouse MouseX::Types Any::Moose
+install DateTime::Tiny Module::Install Moose
+install Data::Dump
+
+install MongoDB::Async

@@ -1,0 +1,7 @@
+install Moose UUID Test::Exception Test::Class 
+install Test::Output Date::Parse
+install Test::Pod Test::Pod::Coverage Test::Tester 
+install Test::NoWarnings Test::Deep 
+install Test::Requires Module::Runtime Test::Warn
+
+install CHI
