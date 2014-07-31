@@ -23,7 +23,7 @@ How to use my modules?
 -------------------
 
 ```
-$ ~/staticperl instsrc staticperl-modules/patches/My-Module
+$ ~/staticperl instsrc staticperl-modules/modules/My-Module
 ```
 
 Patches
@@ -64,4 +64,20 @@ Instead I found out quick workarounds.
 
 Also, many modules in CPAN have incorrect requirements. And you must
 install required modules manually before installing target module.
+
+FAQ
+=======================
+
+What is you changed exactly?
+-----------------------------
+
+1. Replace Build.PL with almost exactly same Makefile.PL
+2. Moving some \*.xs, \*.c, \*.h files to root directory (mostly).
+
+Why you did not post issues in bug tracker, create patches?
+-----------------------------------------------------------
+
+When I can -- I do this.
+Some things is too complicated for me.
+And sometimes I've not enough time to resolve a problem.
 
