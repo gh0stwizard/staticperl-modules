@@ -1,0 +1,31 @@
+--- Fork.pm	2013-08-31 22:01:22.000000000 +0400
++++ /home/tvv/.staticperl-5.18.1/lib/AnyEvent/Fork.pm	2013-10-25 11:30:39.828641749 +0400
+@@ -543,7 +543,7 @@
+       require AnyEvent::Fork::Serve;
+       $AnyEvent::Fork::Serve::OWNER = $parent;
+       close $fh;
+-      $0 = "$_[1] of $parent";
++      $0 = "$_[1] of $parent" if ($0 ne '-e');
+       AnyEvent::Fork::Serve::serve ($slave);
+       exit 0;
+    } elsif (!$pid) {
+--- Fork/Serve.pm	2013-08-31 20:28:17.000000000 +0400
++++ /home/tvv/.staticperl-5.18.1/lib/AnyEvent/Fork/Serve.pm	2013-10-25 11:34:05.866518660 +0400
+@@ -55,7 +55,7 @@
+          my $pid = fork;
+ 
+          if ($pid eq 0) {
+-            $0 = "AnyEvent::Fork of $OWNER";
++            $0 = "AnyEvent::Fork of $OWNER" if ($0 ne '-e');
+             $master = pop @arg;
+ 
+          } else {
+@@ -77,7 +77,7 @@
+          # we could free &serve etc., but this might just unshare
+          # memory that could be shared otherwise.
+          @_ = ($master, @arg);
+-         $0 = "$buf of $OWNER";
++         $0 = "$buf of $OWNER" if ($0 ne '-e'); 
+          package main;
+          goto &$buf;
+ 

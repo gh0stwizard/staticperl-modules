@@ -1,0 +1,3 @@
+patches/AnyEvent_Fork_01.diff
+
+* fix issue for "~/staticperl --static" builds

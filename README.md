@@ -42,7 +42,7 @@ How to use patches?
 cpan > look My-Module
 
 # now you are in My-Module directory
-# copy the path file to working directory
+# copy the patch file to working directory
 $ cp /path/to/staticperl-modules/patches/My-Module/patch-001.diff .
 
 # apply the patch
