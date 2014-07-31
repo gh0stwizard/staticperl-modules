@@ -1,0 +1,9 @@
+install XML::NamespaceSupport XML::SAX::Base XML::SAX 
+
+~~~ XML::LibXML + libxml2-2.9.1 works with perl <=5.16.x only? ~~~
+install XML::LibXML
+
+~~~ see patch for Unicode::LineBreak ~~~
+install Unicode::LineBreak
+
+install XML::Compile::SOAP

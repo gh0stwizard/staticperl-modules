@@ -1,0 +1,5 @@
+URL:
+    https://rt.cpan.org/Public/Bug/Display.html?id=65973
+
+o conf makepl_arg 'CCFLAGS=" -Dxrealloc=_rl_realloc -Dxmalloc=_rl_malloc -Dxfree=_rl_free "'
+

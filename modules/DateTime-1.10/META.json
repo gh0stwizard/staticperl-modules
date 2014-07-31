@@ -1,0 +1,59 @@
+{
+   "abstract" : "A date and time object",
+   "author" : [
+      "Dave Rolsky <autarch@urth.org>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "ExtUtils::MakeMaker version 6.64, CPAN::Meta::Converter version 2.120921",
+   "license" : [
+      "artistic_2"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "DateTime",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Storable" : "0",
+            "Test::Fatal" : "0",
+            "Test::More" : "0.88",
+            "Test::Warnings" : "0.005",
+            "perl" : "5.008001",
+            "utf8" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Carp" : "0",
+            "DateTime::Locale" : "0.41",
+            "DateTime::TimeZone" : "1.09",
+            "Math::Round" : "0",
+            "Params::Validate" : "0.76",
+            "Scalar::Util" : "0",
+            "XSLoader" : "0",
+            "base" : "0",
+            "constant" : "0",
+            "integer" : "0",
+            "overload" : "0",
+            "strict" : "0",
+            "vars" : "0",
+            "warnings" : "0"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "version" : "1.10"
+}

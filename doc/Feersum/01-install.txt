@@ -1,0 +1,2 @@
+install HTTP::Parser HTTP::Parser::XS
+install Feersum

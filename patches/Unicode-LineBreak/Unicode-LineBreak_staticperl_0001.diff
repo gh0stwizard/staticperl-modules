@@ -1,0 +1,12 @@
+--- Makefile.PL.orig	2014-07-31 20:20:08.792674081 +0400
++++ Makefile.PL	2014-07-31 20:20:12.969840007 +0400
+@@ -62,6 +62,9 @@
+ \$(MYEXTLIB): $csubdir\$(DIRFILESEP)Makefile
+ \t$cd_make
+ 
++$csubdir\$(DIRFILESEP)Makefile:
++\t\$(PERL) Makefile.PL
++
+ copy_unidata :
+ \tcd test-data; \\
+ \t[ -f LineBreakTest.txt ] || \\
