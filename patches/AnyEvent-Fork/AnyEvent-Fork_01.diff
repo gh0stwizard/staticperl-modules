@@ -1,5 +1,5 @@
---- Fork.pm	2013-08-31 22:01:22.000000000 +0400
-+++ /home/tvv/.staticperl-5.18.1/lib/AnyEvent/Fork.pm	2013-10-25 11:30:39.828641749 +0400
+--- Fork.pm.orig	2014-08-15 12:10:51.155688251 +0400
++++ Fork.pm	2014-08-15 12:11:31.007688228 +0400
 @@ -543,7 +543,7 @@
        require AnyEvent::Fork::Serve;
        $AnyEvent::Fork::Serve::OWNER = $parent;
@@ -9,8 +9,8 @@
        AnyEvent::Fork::Serve::serve ($slave);
        exit 0;
     } elsif (!$pid) {
---- Fork/Serve.pm	2013-08-31 20:28:17.000000000 +0400
-+++ /home/tvv/.staticperl-5.18.1/lib/AnyEvent/Fork/Serve.pm	2013-10-25 11:34:05.866518660 +0400
+--- Fork/Serve.pm.orig	2014-08-15 12:11:48.007688218 +0400
++++ Fork/Serve.pm	2014-08-15 12:12:29.943688194 +0400
 @@ -55,7 +55,7 @@
           my $pid = fork;
  
@@ -25,7 +25,7 @@
           # memory that could be shared otherwise.
           @_ = ($master, @arg);
 -         $0 = "$buf of $OWNER";
-+         $0 = "$buf of $OWNER" if ($0 ne '-e'); 
++         $0 = "$buf of $OWNER" if ($0 ne '-e');
           package main;
           goto &$buf;
  
