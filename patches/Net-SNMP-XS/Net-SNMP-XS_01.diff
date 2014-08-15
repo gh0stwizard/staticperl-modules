@@ -1,0 +1,11 @@
+--- XS.xs.orig	2014-08-15 16:57:03.067678507 +0400
++++ XS.xs	2014-08-15 16:57:45.555678482 +0400
+@@ -68,7 +68,7 @@
+ 
+   msg = newSVsv (neu);
+   cur_bufobj = SvRV (msg);
+-  sv_rvweaken (msg);
++  sv_rvweaken (neu);
+ 
+   errflag     = 0;
+   leading_dot = -1;

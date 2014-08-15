@@ -1,4 +1,3 @@
-.gitignore
 Changes
 lib/Lexical/SealRequireHints.pm
 Makefile.PL

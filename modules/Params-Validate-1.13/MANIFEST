@@ -102,8 +102,6 @@ t/release-xs-is-loaded.t
 t/release-xs-segfault.t
 TODO
 xs/Makefile.PL
-xs/MYMETA.json
-xs/MYMETA.yml
 xs/ppport.h
 xs/XS.xs
 META.yml                                 Module YAML meta-data (added by MakeMaker)
