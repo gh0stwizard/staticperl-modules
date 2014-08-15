@@ -1,0 +1,22 @@
+--- Makefile.PL.orig	2014-08-15 11:44:08.203689160 +0400
++++ Makefile.PL	2014-08-15 11:44:39.791689142 +0400
+@@ -62,6 +62,19 @@
+ 
+    INSTALLDIRS  => ($] >= 5.00703 ? 'perl' : 'site'),
+ 
++   XS => {
++    'Call.xs' => 'Call/Call.c',
++    'Exec.xs' => 'Exec/Exec.c',
++    'decrypt.xs' => 'decrypt/decrypt.c',
++    'tee.xs' => 'tee/tee.c',
++   },
++   OBJECT => [
++    'Call/Call.o',
++    'Exec/Exec.o',
++    'tee/tee.o',
++    'decrypt/decrypt.o',
++   ],
++
+    ((ExtUtils::MakeMaker->VERSION() gt '6.30') ?
+     ('LICENSE'  => 'perl', SIGN => 1)  : ()),
+    ((ExtUtils::MakeMaker->VERSION() gt '6.46') ?
