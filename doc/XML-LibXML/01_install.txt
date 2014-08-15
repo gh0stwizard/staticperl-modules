@@ -1,5 +1,10 @@
-If you got errors like "Start tag expected, '<' not found"
-try to rebuild staticperl without option:
+install XML::NamespaceSupport XML::SAX::Base XML::SAX
+
+
+Note:
+
+    If you got errors like "Start tag expected, '<' not found"
+    try to rebuild staticperl without option:
 
     PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
 
