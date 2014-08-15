@@ -1,0 +1,5 @@
+If you got errors like "Start tag expected, '<' not found"
+try to rebuild staticperl without option:
+
+    PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
+
