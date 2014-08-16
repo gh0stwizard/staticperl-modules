@@ -1,16 +1,6 @@
 #!/bin/sh
 
-#
-# ~/.staticperlrc example configuration file
-#
-# Usage:
-#
-# 1. Comment out string with PERL_LDFLAGS
-# 2. ~/staticperl configure
-# 3. Comment PERL_LDFLAGS
-# 4. ~/staticperl install
-
-export EMAIL="email@example.com"
+export EMAIL="user@example.com"
 export DLCACHE="$HOME/tmp/dl"
 
 export PERL_VERSION="5.16.3"
@@ -18,61 +8,81 @@ export PERL_VERSION="5.16.3"
 export STATICPERL="$HOME/.staticperl-$PERL_VERSION"
 export LIBHOME="$STATICPERL/lib/CORE"
 
-# at configure
-#export PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
+# at configure || kept for Feersum and other modules
+export PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
 
-# optionally: ask questions in cpan
+# change on your taste
+export PERL_CONFIGURE="-Duse64bitint -Duselargefiles" #-Dusedl
+
+# ask questions in cpan
 #export PERL_MM_USE_DEFAULT=0
 
-# DBD::Oracle needs variables below
+# DBD::Oracle
 #export LD_RUN_PATH="/usr/lib/oracle/11.2/client64/lib"
 #export LD_LIBRARY_PATH="/usr/lib/oracle/11.2/client64/lib"
 #export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
 #export ORACLE_BASE="/usr/lib/oracle"
 
-# see documentation for staticperl
-export PERL_CONFIGURE="-Duse64bitint -Duselargefiles" #-Dusedl
-
 # dir with patched modules by gh0stwizard
 export SPERL_MODS="$HOME/tmp/staticperl-modules/modules"
 
 
-# Modules below will be installed automatically when running
-# ~/staticperl install
-#
-# Change as you wish.
-postinstall() {
-    instcpan Test::LeakTrace Test::Requires Test::Harness Sub::Uplevel Test::Exception Test::Simple
-    instcpan Devel::Symdump Pod::Coverage Test::Pod::Coverage
-    instcpan Test::Pod Tree::DAG_Node Test::Warn
-    instcpan Sub::Install Params::Util Data::OptList Sub::Exporter Test::Output Try::Tiny Test::Fatal
-    instcpan Test::Tester Test::NoWarnings Test::Tester Test::Deep
-    instcpan Params::Util List::MoreUtils Module::Runtime Module::Implementation
-    instcpan Sub::Exporter Dist::CheckConflicts Package::DeprecationManager Package::Stash
+# postinstall functions
 
+upgradeModules() {
     instsrc $SPERL_MODS/Class-Load-0.21
-
-    instcpan Test::SharedFork Test::TCP
-
     instsrc $SPERL_MODS/Class-Load-XS-0.08
     instsrc $SPERL_MODS/Params-Classify-0.013
     instsrc $SPERL_MODS/Params-Validate-1.13
 
+    instcpan Class::Singleton Math::Round
+    instcpan DateTime::Locale DateTime::TimeZone
+    instsrc $SPERL_MODS/DateTime-1.10
+}
+
+mypostinstall() {
+    instcpan Test::LeakTrace Test::Requires Test::Harness Sub::Uplevel
+    instcpan Test::Exception Test::Simple
+    instcpan Devel::Symdump Pod::Coverage Test::Pod::Coverage
+    instcpan Test::Pod Tree::DAG_Node Test::Warn
+    instcpan Sub::Install Params::Util Data::OptList Sub::Exporter 
+    instcpan Test::Output Try::Tiny Test::Fatal
+    instcpan Test::Tester Test::NoWarnings Test::Tester Test::Deep
+    instcpan Params::Util List::MoreUtils Module::Runtime Module::Implementation
+    instcpan Sub::Exporter Dist::CheckConflicts Package::DeprecationManager Package::Stash
+
+    instcpan Test::SharedFork Test::TCP
     instcpan Test::Warnings
 
     instcpan Sub::Exporter::Progressive Devel::GlobalDestruction
     instcpan Dist::CheckConflicts Data::Compare
-    instcpan Class::Singleton Math::Round
-    instcpan DateTime::Locale DateTime::TimeZone
 
-    instsrc $SPERL_MODS/DateTime-1.10
     instcpan MIME::Base64
 
-#    instcpan IO::AIO EV Guard AnyEvent Coro
-#    instcpan JSON::XS JSON 
-#    instcpan Async::Interrupt EV::Loop::Async
+    instcpan IO::AIO EV Guard AnyEvent Coro
+    instcpan JSON::XS JSON 
+    instcpan Async::Interrupt EV::Loop::Async
 
-#    instcpan IO::FDPass
-#    instcpan Proc::FastSpawn AnyEvent::Fork AnyEvent::Fork::Pool
-#    instcpan DBI 
+    instcpan IO::FDPass Proc::FastSpawn
+
+# see patch notes
+#    instcpan AnyEvent::Fork AnyEvent::Fork::Pool
 }
+
+
+# Modules below will be installed automatically during
+# ~/staticperl install stage
+#
+# Comment out and change as you wish
+
+#postinstall() {
+# upgrade common modules
+#    upgradeModules
+
+# install XML::LibXML
+#    instcpan XML::NamespaceSupport XML::SAX::Base XML::SAX
+#    instcpan XML::LibXML
+
+# install dev mods
+#    mypostinstall
+#}
