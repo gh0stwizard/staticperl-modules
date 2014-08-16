@@ -1,10 +1,14 @@
 install XML::NamespaceSupport XML::SAX::Base XML::SAX
+install XML::LibXML
 
 
-Note:
+Issue: 
 
-    If you got errors like "Start tag expected, '<' not found"
-    try to rebuild staticperl without option:
+    Start tag expected, '<' not found
 
-    PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
-
+Possible workaround:
+    
+    Don't upgrade/install modules which link against perl with -lz,
+    like Compress::Zlib
+    
+    Tested on perl-5.16.3

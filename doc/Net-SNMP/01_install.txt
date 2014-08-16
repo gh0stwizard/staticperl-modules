@@ -1,0 +1,3 @@
+install Crypt::DES Digest::MD5 Digest::SHA1 Digest::HMAC Crypt::Rijndael
+
+install Net::SNMP

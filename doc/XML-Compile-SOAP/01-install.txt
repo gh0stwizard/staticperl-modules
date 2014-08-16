@@ -4,4 +4,9 @@ install XML::LibXML
 ~~~ see patch for Unicode::LineBreak ~~~
 install Unicode::LineBreak
 
+
 install XML::Compile::SOAP
+
+
+~~~ optionally ~~~
+install XML::Compile::WSDL11
