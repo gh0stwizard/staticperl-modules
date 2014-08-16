@@ -1,0 +1,8 @@
+==> sick by Digest::MD6
+
+install LWP::Simple Net::Interface 
+install Digest::HMAC Crypt::DES Digest::SHA1
+install Object::Accessor 
+install Digest::MD6 Digest::HMAC_MD6
+
+install AnyEvent::MP
