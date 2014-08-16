@@ -84,7 +84,7 @@ When I can -- I do this.
 Some things is too complicated for me.
 And sometimes I've not enough time to resolve a problem.
 
-Latest/development version of staticperl
+Latest version of staticperl
 ========================================
 
 Can be found [here](http://cvs.schmorp.de/App-Staticperl/bin/staticperl\?revision\=HEAD).
