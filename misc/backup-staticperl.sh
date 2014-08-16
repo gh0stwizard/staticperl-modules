@@ -13,6 +13,7 @@ tar -zcvpf ${BACKUP_FILE} \
     --exclude="${PERL_DIR}/src/*" \
     --exclude="${PERL_DIR}/cpan/build/*" \
     --exclude="${PERL_DIR}/cpan/sources/*" \
+    --exclude="${PERL_DIR}/cache/*" \
     $PERL_DIR \
 || exit 1
 
