@@ -23,7 +23,7 @@ How to use my modules?
 -------------------
 
 ```
-$ ~/staticperl instsrc staticperl-modules/modules/My-Module
+shell> ~/staticperl instsrc staticperl-modules/modules/My-Module
 ```
 
 Patches
@@ -38,18 +38,21 @@ How to use patches?
 -------------------
 
 ```
-~/staticperl cpan
+# open cpan shell
+shell> ~/staticperl cpan
+
+# extract module via cpan and open shell inside that dir
 cpan > look My-Module
 
 # now you are in My-Module directory
 # copy the patch file to working directory
-$ cp /path/to/staticperl-modules/patches/My-Module/patch-001.diff .
+shell> cp /path/to/staticperl-modules/patches/My-Module/patch-001.diff .
 
 # apply the patch
-$ patch -p0 < patch-001.diff
+shell> patch -p0 < patch-001.diff
 
 # return to cpan shell
-$ Ctrl-D
+shell> Ctrl-D
 
 # install module as usual
 cpan > install My-Module
