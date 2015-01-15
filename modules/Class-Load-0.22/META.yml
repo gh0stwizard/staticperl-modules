@@ -1,0 +1,41 @@
+---
+abstract: 'a working (require "Class::Name") and more'
+author:
+  - 'Shawn M Moore <sartak at bestpractical.com>'
+build_requires:
+  ExtUtils::MakeMaker: '0'
+  File::Spec: '0'
+  Test::Fatal: '0'
+  Test::More: '0.88'
+  Test::Requires: '0'
+  constant: '0'
+  lib: '0'
+  version: '0'
+configure_requires:
+  ExtUtils::MakeMaker: '6.30'
+dynamic_config: 1
+generated_by: 'ExtUtils::MakeMaker version 7.04, CPAN::Meta::Converter version 2.143240'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: '1.4'
+name: Class-Load
+no_index:
+  directory:
+    - t
+    - inc
+requires:
+  Carp: '0'
+  Data::OptList: '0'
+  Exporter: '0'
+  Module::Implementation: '0.04'
+  Module::Runtime: '0.012'
+  Package::Stash: '0.14'
+  Scalar::Util: '0'
+  Try::Tiny: '0'
+  base: '0'
+  namespace::clean: '0'
+  perl: '5.006'
+  strict: '0'
+  warnings: '0'
+version: '0.22'

@@ -8,7 +8,8 @@ export PERL_VERSION="5.16.3"
 export STATICPERL="$HOME/.staticperl-$PERL_VERSION"
 export LIBHOME="$STATICPERL/lib/CORE"
 
-# at configure || kept for Feersum and other modules
+# at ~/staticperl configure || kept for Feersum and other modules
+# at ~/staticperl install comment this line
 export PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
 
 # change on your taste
@@ -24,46 +25,82 @@ export PERL_CONFIGURE="-Duse64bitint -Duselargefiles" #-Dusedl
 #export ORACLE_BASE="/usr/lib/oracle"
 
 # dir with patched modules by gh0stwizard
-export SPERL_MODS="$HOME/tmp/staticperl-modules/modules"
+[Aexport SPERL_MODS="$HOME/tmp/staticperl-modules/modules"
 
 
 # postinstall functions
 
 upgradeModules() {
-    instsrc $SPERL_MODS/Class-Load-0.21
-    instsrc $SPERL_MODS/Class-Load-XS-0.08
+    instsrc $SPERL_MODS/Class-Load-0.22
+    instcpan Class::Load::XS
+    
     instsrc $SPERL_MODS/Params-Classify-0.013
-    instsrc $SPERL_MODS/Params-Validate-1.13
+    instsrc $SPERL_MODS/Params-Validate-1.17
 
-    instcpan Class::Singleton Math::Round
-    instcpan DateTime::Locale DateTime::TimeZone
-    instsrc $SPERL_MODS/DateTime-1.10
+    instcpan Class::Singleton
+    instcpan Math::Round
+    instcpan DateTime::Locale
+    instcpan List::AllUtils
+    instcpan DateTime::TimeZone
+    instsrc $SPERL_MODS/DateTime-1.18
 }
 
 mypostinstall() {
-    instcpan Test::LeakTrace Test::Requires Test::Harness Sub::Uplevel
-    instcpan Test::Exception Test::Simple
-    instcpan Devel::Symdump Pod::Coverage Test::Pod::Coverage
-    instcpan Test::Pod Tree::DAG_Node Test::Warn
-    instcpan Sub::Install Params::Util Data::OptList Sub::Exporter 
-    instcpan Test::Output Try::Tiny Test::Fatal
-    instcpan Test::Tester Test::NoWarnings Test::Tester Test::Deep
-    instcpan Params::Util List::MoreUtils Module::Runtime Module::Implementation
-    instcpan Sub::Exporter Dist::CheckConflicts Package::DeprecationManager Package::Stash
+    instcpan Test::LeakTrace
+    instcpan Test::Requires
+    instcpan Test::Harness
+    instcpan Sub::Uplevel
+    instcpan Test::Exception
+    instcpan Test::Simple
+    instcpan Devel::Symdump
+    instcpan Pod::Coverage
+    instcpan Test::Pod::Coverage
+    instcpan Test::Pod
+    instcpan Tree::DAG_Node
+    instcpan Test::Warn
+    instcpan Sub::Install
+    instcpan Params::Util
+    instcpan Data::OptList
+    instcpan Sub::Exporter 
+    instcpan Test::Output
+    instcpan Try::Tiny
+    instcpan Test::Fatal
+    instcpan Test::Tester
+    instcpan Test::NoWarnings
+    instcpan Test::Tester
+    instcpan Test::Deep
+    instcpan Params::Util
+    instcpan List::MoreUtils
+    instcpan Module::Runtime
+    instcpan Module::Implementation
+    instcpan Sub::Exporter
+    instcpan Dist::CheckConflicts
+    instcpan Package::DeprecationManager
+    instcpan Package::Stash
 
-    instcpan Test::SharedFork Test::TCP
+    instcpan Test::SharedFork
+    instcpan Test::TCP
     instcpan Test::Warnings
 
-    instcpan Sub::Exporter::Progressive Devel::GlobalDestruction
-    instcpan Dist::CheckConflicts Data::Compare
+    instcpan Sub::Exporter::Progressive
+    instcpan Devel::GlobalDestruction
+    instcpan Dist::CheckConflicts
+    instcpan Data::Compare
 
     instcpan MIME::Base64
 
-    instcpan IO::AIO EV Guard AnyEvent Coro
-    instcpan JSON::XS JSON 
-    instcpan Async::Interrupt EV::Loop::Async
+    instcpan IO::AIO
+    instcpan EV
+    instcpan Guard
+    instcpan AnyEvent
+    instcpan Coro
+    instcpan JSON::XS
+    instcpan JSON 
+    instcpan Async::Interrupt
+    instcpan EV::Loop::Async
 
-    instcpan IO::FDPass Proc::FastSpawn
+    instcpan IO::FDPass
+    instcpan Proc::FastSpawn
 
 # see patch notes
 #    instcpan AnyEvent::Fork AnyEvent::Fork::Pool
