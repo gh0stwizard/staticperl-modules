@@ -25,7 +25,7 @@ export PERL_CONFIGURE="-Duse64bitint -Duselargefiles" #-Dusedl
 #export ORACLE_BASE="/usr/lib/oracle"
 
 # dir with patched modules by gh0stwizard
-[Aexport SPERL_MODS="$HOME/tmp/staticperl-modules/modules"
+export SPERL_MODS="$HOME/tmp/staticperl-modules/modules"
 
 
 # postinstall functions
