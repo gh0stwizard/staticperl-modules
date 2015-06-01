@@ -1,0 +1,13 @@
+--- RPC/Async.pm.orig	2015-06-01 11:12:58.000000000 +0300
++++ RPC/Async.pm	2015-06-01 11:13:24.000000000 +0300
+@@ -16,7 +16,9 @@
+    my $rfh = shift;
+    my $wfh = fileno $rfh ? $rfh : *STDOUT;
+ 
+-   $0 =~ s/^AnyEvent::Fork::RPC::Async::run of /$function of /;
++   if ( $0 ne '-e' ) {
++     $0 =~ s/^AnyEvent::Fork::RPC::Async::run of /$function of /;
++   }
+ 
+    {
+       package main;
