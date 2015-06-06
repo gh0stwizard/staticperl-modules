@@ -489,6 +489,7 @@ EOF
          CPAN::Shell->o (conf => q<prefs_dir>, "'"$STATICPERL"'/cpan/prefs");
          CPAN::Shell->o (conf => q<histfile> , "'"$STATICPERL"'/cpan/histfile");
          CPAN::Shell->o (conf => q<keep_source_where>, "'"$STATICPERL"'/cpan/sources");
+         CPAN::Shell->o (conf => q<makepl_arg>, "MAP_TARGET=perl");
          CPAN::Shell->o (conf => q<make_install_make_command>, "'"$PERL_PREFIX"'/bin/SP-make-install-make");
          CPAN::Shell->o (conf => q<prerequisites_policy>, q<follow>);
          CPAN::Shell->o (conf => q<build_requires_install_policy>, q<yes>);
