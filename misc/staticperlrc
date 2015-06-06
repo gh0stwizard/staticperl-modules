@@ -34,8 +34,8 @@ export LIBHOME="$STATICPERL/lib/CORE"
 # Change them on your taste.
 export PERL_CONFIGURE="-Duse64bitint -Duselargefiles"
 
-# Disables asking questions in CPAN shell.
-# Useful for some modules like EV.
+# Enable "ask questions" option of the CPAN shell.
+# Useful for some modules like EV to configure & install it manually.
 #export PERL_MM_USE_DEFAULT=0
 
 # DBD::Oracle
