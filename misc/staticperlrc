@@ -1,125 +1,191 @@
 #!/bin/sh
 
-export EMAIL="user@example.com"
-export DLCACHE="$HOME/tmp/dl"
+# < Optional >
+# Might be useful for some modules like Feersum.
+# Uncomment the line at the configure stage. Comment the line at the install stage.
+# See details on staticperl CPAN page.
+#export PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
 
-export PERL_VERSION="5.16.3"
+# Your email address.
+# It will be inserted inside of the Perl binary file.
+# To see it type "~/staticperl perl -V"
+export EMAIL="username@example.com"
 
+# Where is perl source files will be kept
+export DLCACHE="$HOME/dl/source/perl"
+
+# A directory with patched modules by gh0stwizard
+GW_PATCHSET="$HOME/dev/perl/staticperl-modules"
+export GW_MODULES="${GW_PATCHSET}/modules"
+export GW_PATCHES="${GW_PATCHSET}/patches"
+unset GW_PATCHSET
+
+# Choose Perl version.
+# List of releases: http://www.cpan.org/src/README.html
+export PERL_VERSION="5.22.0"
+
+# Here will be installed all modules, perl binary, scripts, etc.
 export STATICPERL="$HOME/.staticperl-$PERL_VERSION"
+
+# Some modules requires LIBHOME environment variable to be set correctly.
 export LIBHOME="$STATICPERL/lib/CORE"
 
-# at ~/staticperl configure || kept for Feersum and other modules
-# at ~/staticperl install comment this line
-export PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
+# Additional flags when building Perl.
+# Change them on your taste.
+export PERL_CONFIGURE="-Duse64bitint -Duselargefiles"
 
-# change on your taste
-export PERL_CONFIGURE="-Duse64bitint -Duselargefiles" #-Dusedl
-
-# ask questions in cpan
+# Disables asking questions in CPAN shell.
+# Useful for some modules like EV.
 #export PERL_MM_USE_DEFAULT=0
 
 # DBD::Oracle
-#export LD_RUN_PATH="/usr/lib/oracle/11.2/client64/lib"
 #export LD_LIBRARY_PATH="/usr/lib/oracle/11.2/client64/lib"
 #export ORACLE_HOME="/usr/lib/oracle/11.2/client64"
+# DBD::Oracle additionals
+#export ORACLE_USERID="scott/password"
+#export ORACLE_SID="DB"
+#export TNS_ADMIN="/etc"
+#export LD_RUN_PATH="/usr/lib/oracle/11.2/client64/lib"
 #export ORACLE_BASE="/usr/lib/oracle"
 
-# dir with patched modules by gh0stwizard
-export SPERL_MODS="$HOME/tmp/staticperl-modules/modules"
+# Optimization flags when building Perl.
+#export PERL_OPTIMIZE="-Os -ffunction-sections -fdata-sections -finline-limit=8 -mpush-args -mno-inline-stringops-dynamically -mno-align-stringops"
 
+# Linking against this libraries when building Perl.
+#export PERL_LIBS="-lcrypt -lm"
 
-# postinstall functions
-
-upgradeModules() {
-    instsrc $SPERL_MODS/Class-Load-0.22
-    instcpan Class::Load::XS
-    
-    instsrc $SPERL_MODS/Params-Classify-0.013
-    instsrc $SPERL_MODS/Params-Validate-1.17
-
-    instcpan Class::Singleton
-    instcpan Math::Round
-    instcpan DateTime::Locale
-    instcpan List::AllUtils
-    instcpan DateTime::TimeZone
-    instsrc $SPERL_MODS/DateTime-1.18
-}
-
-mypostinstall() {
-    instcpan Test::LeakTrace
-    instcpan Test::Requires
-    instcpan Test::Harness
-    instcpan Sub::Uplevel
-    instcpan Test::Exception
-    instcpan Test::Simple
-    instcpan Devel::Symdump
-    instcpan Pod::Coverage
-    instcpan Test::Pod::Coverage
-    instcpan Test::Pod
-    instcpan Tree::DAG_Node
-    instcpan Test::Warn
-    instcpan Sub::Install
-    instcpan Params::Util
-    instcpan Data::OptList
-    instcpan Sub::Exporter 
-    instcpan Test::Output
-    instcpan Try::Tiny
-    instcpan Test::Fatal
-    instcpan Test::Tester
-    instcpan Test::NoWarnings
-    instcpan Test::Tester
-    instcpan Test::Deep
-    instcpan Params::Util
-    instcpan List::MoreUtils
-    instcpan Module::Runtime
-    instcpan Module::Implementation
-    instcpan Sub::Exporter
-    instcpan Dist::CheckConflicts
-    instcpan Package::DeprecationManager
-    instcpan Package::Stash
-
-    instcpan Test::SharedFork
-    instcpan Test::TCP
-    instcpan Test::Warnings
-
-    instcpan Sub::Exporter::Progressive
-    instcpan Devel::GlobalDestruction
-    instcpan Dist::CheckConflicts
-    instcpan Data::Compare
-
-    instcpan MIME::Base64
-
-    instcpan IO::AIO
-    instcpan EV
-    instcpan Guard
-    instcpan AnyEvent
-    instcpan Coro
-    instcpan JSON::XS
-    instcpan JSON 
-    instcpan Async::Interrupt
-    instcpan EV::Loop::Async
-
-    instcpan IO::FDPass
-    instcpan Proc::FastSpawn
-
-# see patch notes
-#    instcpan AnyEvent::Fork AnyEvent::Fork::Pool
-}
-
-
-# Modules below will be installed automatically during
-# ~/staticperl install stage
 #
-# Comment out and change as you wish
+# Post installation functions.
+#
+# See postinstall() at the bottom of this file for details.
 
-#postinstall() {
-# upgrade common modules
-#    upgradeModules
+install_aio_ev() {
+	instcpan IO::AIO EV
+}
 
-# install XML::LibXML
-#    instcpan XML::NamespaceSupport XML::SAX::Base XML::SAX
-#    instcpan XML::LibXML
+install_json_xs() {
+	instcpan JSON::XS JSON
+}
 
-# install dev mods
-#    mypostinstall
-#}
+install_anyevent() {
+	instcpan Guard
+
+	# < Optional >
+	# Net::SSLeay requires openssl-dev package installed in OS
+	#instcpan Net::SSLeay
+	#instcpan Async::Interrupt
+
+	instcpan AnyEvent
+}
+
+install_coro() {
+	install_aio_ev
+	install_anyevent
+
+	instcpan BDB
+	instcpan AnyEvent::AIO
+	instcpan AnyEvent::BDB
+	instcpan Event
+	instcpan Coro
+}
+
+install_ae_fork() {
+	install_aio_ev
+	install_json_xs
+	install_anyevent
+
+	instcpan EV::Loop::Async
+	instcpan IO::FDPass
+	instcpan Proc::FastSpawn
+
+	instcpan AnyEvent::Fork
+	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork.pm \
+		${GW_PATCHES}/AnyEvent-Fork/AnyEvent-Fork-0001.diff
+	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/Serve.pm \
+		${GW_PATCHES}/AnyEvent-Fork/AnyEvent-Fork-0002.diff
+
+	instcpan AnyEvent::Fork::RPC
+	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/RPC/Async.pm \
+		${GW_PATCHES}/AnyEvent-Fork-RPC/AnyEvent-Fork-RPC-0001.diff
+	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/RPC/Sync.pm \
+		${GW_PATCHES}/AnyEvent-Fork-RPC/AnyEvent-Fork-RPC-0002.diff
+		
+	instcpan Array::Heap
+	instcpan AnyEvent::Fork::Pool
+	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/Pool.pm \
+		${GW_PATCHES}/AnyEvent-Fork-Pool/AnyEvent-Fork-Pool_01.diff
+}
+
+install_xml() {
+	instcpan XML::NamespaceSupport
+	instcpan XML::SAX::Base
+	instcpan XML::SAX
+	instcpan XML::LibXML
+}
+
+install_feersum() {
+	install_aio_ev
+	install_json_xs
+	install_anyevent
+
+	instcpan Feersum
+}
+
+install_dbd_oracle() {
+	instcpan DBI
+	instcpan DBD::Oracle
+}
+
+# ??? requirement for one of dependence module of DateTime
+install_class_load() {
+	# Class::Load requirements
+	instcpan Try::Tiny
+	instcpan Module::Runtime
+	instcpan Module::Implementation
+	instcpan Package::Stash
+	instcpan Data::OptList
+	instcpan namespace::clean
+
+	instsrc ${GW_MODULES}/Class-Load-0.22
+
+	# Class-Load-XS 0.09 installs out of box
+	instcpan Class::Load::XS
+}
+
+# requirement for DateTime
+install_params_validate() {
+	instsrc ${GW_MODULES}/Params-Classify-0.013
+	
+	# Params::Validate requirements
+	instcpan Module::Implementation
+	
+	instsrc ${GW_MODULES}/Params-Validate-1.18
+}
+
+install_datetime() {
+	install_class_load
+	install_params_validate
+
+	instcpan DateTime::Locale
+	instcpan List::AllUtils
+	instcpan DateTime::TimeZone
+
+	instsrc ${GW_MODULES}/DateTime-1.19
+}
+
+postinstall() {
+#
+# Uncomment lines below if you wish to install these modules
+# at "~/staticperl install" stage.
+#
+
+#	install_aio_ev
+#	install_json_xs
+#	install_anyevent
+
+#	install_ae_fork
+#	install_feersum
+
+#	install_datetime
+	: ;
+}
