@@ -65,7 +65,7 @@ cpan > install My-Module
 Notes and documentation
 =======================
 
-In the <code>doc</code directory you may find some useful notes.
+In the <code>doc</code> directory you may find some useful notes.
 I should create issues in RT bug tracker for some of them.
 Instead of that I found out quick workarounds and post them
 into this repo.
