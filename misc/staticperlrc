@@ -2,16 +2,17 @@
 
 # < Optional >
 # Might be useful for some modules like Feersum.
-# Uncomment the line at the configure stage. Comment the line at the install stage.
-# See details on staticperl CPAN page.
+#  Comment out the line below at the configure stage.
+#  Comment the line at the install stage.
+# See details at staticperl CPAN's page.
 #export PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
 
 # Your email address.
 # It will be inserted inside of the Perl binary file.
-# To see it type "~/staticperl perl -V"
-export EMAIL="username@example.com"
+# To see it type "~/staticperl perl -V".
+export EMAIL="staticperl@example.com"
 
-# Where is perl source files will be kept
+# Where is perl source files will be kept (perl-VERSION.tar.bz2)
 export DLCACHE="$HOME/dl/source/perl"
 
 # A directory with patched modules by gh0stwizard
@@ -20,23 +21,29 @@ export GW_MODULES="${GW_PATCHSET}/modules"
 export GW_PATCHES="${GW_PATCHSET}/patches"
 unset GW_PATCHSET
 
-# Choose Perl version.
-# List of releases: http://www.cpan.org/src/README.html
+# Choose Perl version to install.
+# List of the Perl releases: http://www.cpan.org/src/README.html
 export PERL_VERSION="5.22.0"
 
-# Here will be installed all modules, perl binary, scripts, etc.
+# staticperl's directory with installed modules, scripts, etc.
 export STATICPERL="$HOME/.staticperl-$PERL_VERSION"
 
 # Some modules requires LIBHOME environment variable to be set correctly.
 export LIBHOME="$STATICPERL/lib/CORE"
 
-# Additional flags when building Perl.
-# Change them on your taste.
+# Configuration flags while building Perl.
+# See installation instructions in Perl distribution for details.
 export PERL_CONFIGURE="-Duse64bitint -Duselargefiles"
 
 # Enable "ask questions" option of the CPAN shell.
-# Useful for some modules like EV to configure & install it manually.
+# Useful for some modules, e.g. EV, to configure & install them manually.
 #export PERL_MM_USE_DEFAULT=0
+
+# Optimization flags when building Perl.
+#export PERL_OPTIMIZE="-Os -ffunction-sections -fdata-sections -finline-limit=8 -mpush-args -mno-inline-stringops-dynamically -mno-align-stringops"
+
+# Linking against this libraries when building Perl.
+#export PERL_LIBS="-lcrypt -lm"
 
 # DBD::Oracle
 #export LD_LIBRARY_PATH="/usr/lib/oracle/11.2/client64/lib"
@@ -48,16 +55,11 @@ export PERL_CONFIGURE="-Duse64bitint -Duselargefiles"
 #export LD_RUN_PATH="/usr/lib/oracle/11.2/client64/lib"
 #export ORACLE_BASE="/usr/lib/oracle"
 
-# Optimization flags when building Perl.
-#export PERL_OPTIMIZE="-Os -ffunction-sections -fdata-sections -finline-limit=8 -mpush-args -mno-inline-stringops-dynamically -mno-align-stringops"
-
-# Linking against this libraries when building Perl.
-#export PERL_LIBS="-lcrypt -lm"
-
 #
 # Post installation functions.
 #
 # See postinstall() at the bottom of this file for details.
+#
 
 install_aio_ev() {
 	instcpan IO::AIO EV
@@ -175,7 +177,7 @@ install_datetime() {
 
 postinstall() {
 #
-# Uncomment lines below if you wish to install these modules
+# Comment out lines below if you wish to install these modules
 # at "~/staticperl install" stage.
 #
 
