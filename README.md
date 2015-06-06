@@ -82,7 +82,7 @@ What did you changed exactly?
 
 1. Replaced Build.PL with almost exactly the same Makefile.PL.
 2. Moved some \*.xs, \*.c, \*.h files to root directory (mostly). This
-is much easer that writing a lot of strings to configure Makefile.PL
+is much easer then writing a lot of strings to configure Makefile.PL
 to find this files.
 
 Why you did not posting issues to bug tracker, creating patches?
