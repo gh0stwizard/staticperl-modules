@@ -318,6 +318,7 @@ write_shellscript() {
       echo "STATICPERL=\"$STATICPERL\""
       echo "PERL_PREFIX=\"$PERL_PREFIX\""
       echo "MAKE=\"$MAKE\""
+      echo "PERL_VERSION=\"$PERL_VERSION\""
       cat
    } >"$PERL_PREFIX/bin/$1"
    chmod 755 "$PERL_PREFIX/bin/$1"
@@ -401,6 +402,10 @@ EOF
       write_shellscript SP-patch-postinstall <<'EOF'
 #! sh
 
+# get perl version (e.g 5.20.1: 5 release 20 version 1 subversion)
+# see write_shellscript function for details
+VERSION=$(echo $PERL_VERSION | awk 'BEGIN { FS = "." } END { print $2 }')
+
 # helper to apply patches after installation
 
 patch() {
@@ -446,10 +451,13 @@ patch ExtUtils/MM_Unix.pm mm_unix_pm '
 # this is required for dynamic loading in static perls,
 # and static loading in dynamic perls, when rebuilding a new perl.
 # Why this patch is necessray I don't understand. Yup.
+
+if [ $VERSION -lt 20 ]; then
 patch ExtUtils/Miniperl.pm extutils_miniperl.pm '
 /^sub writemain/ a\
     push @_, canon("/","DynaLoader"); # patched by staticperl
 '
+fi
 
 # ExtUtils::CBuilder always tries to link shared libraries
 # even on systems without shared library support. From the same
@@ -481,7 +489,6 @@ EOF
          CPAN::Shell->o (conf => q<prefs_dir>, "'"$STATICPERL"'/cpan/prefs");
          CPAN::Shell->o (conf => q<histfile> , "'"$STATICPERL"'/cpan/histfile");
          CPAN::Shell->o (conf => q<keep_source_where>, "'"$STATICPERL"'/cpan/sources");
-         CPAN::Shell->o (conf => q<makepl_arg>, "MAP_TARGET=perl");
          CPAN::Shell->o (conf => q<make_install_make_command>, "'"$PERL_PREFIX"'/bin/SP-make-install-make");
          CPAN::Shell->o (conf => q<prerequisites_policy>, q<follow>);
          CPAN::Shell->o (conf => q<build_requires_install_policy>, q<yes>);
