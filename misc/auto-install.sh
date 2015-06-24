@@ -11,9 +11,9 @@ RC_FILE=${1:-$RC_FALL}
 SP_FILE="$HOME/staticperl"
 OURFILE="/tmp/staticperlrc-autoinstall"
 
+
 get_rc() {
 	if [ -r $RC_FILE ]; then
-		echo ">>> Using staticperlrc file: $RC_FILE"
 		. ${RC_FILE}
 	else
 		echo "Usage: auto-install.sh [staticperlrc-file]"
@@ -30,9 +30,10 @@ cleanup() {
 
 	if [ -r $rcfile ]; then
 		NEWFILE="${rcfile}-auto-$(date +%Y-%m-%d_%H-%M)"
+		echo "*** Copying $OURFILE $NEWFILE"
 		cp $OURFILE $NEWFILE || exit 1
 	else
-		echo "*** Copy $OURFILE $rcfile"
+		echo "*** Copying $OURFILE $rcfile"
 		cp $OURFILE $rcfile || exit 1
 	fi
 
@@ -40,15 +41,16 @@ cleanup() {
 }
 
 status() {
+	echo ">>> Using staticperlrc file: $RC_FILE"
+	echo ">>> Temporary file: $OURFILE"
 	echo "*** Perl version: $PERL_VERSION"
 	echo "*** Installation directory: $STATICPERL"
 
-	
-	if [ "$GW_MODULES" != "" ]; then	
+	if [ "$GW_MODULES" != "" ]; then
 		if [ -d $GW_MODULES ]; then
 			echo "*** gh0stwizard's modules: $GW_MODULES"
 			[ -d $GW_PATCHES ] && 
-			echo "***               patches: $GW_PATCHES"			
+			echo "***               patches: $GW_PATCHES"
 		else
 			echo "!!! $GW_MODULES: is not a directory"
 			exit 1
@@ -121,11 +123,13 @@ fi
 status
 sleep 5
 
+# configure stage
 checkstage
 preparerc
 export STATICPERLRC=$OURFILE
 $SP_FILE $COMMAND || exit 1
 
+# install stage
 checkstage
 preparerc
 $SP_FILE $COMMAND || exit 1
