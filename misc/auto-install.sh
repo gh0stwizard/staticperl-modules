@@ -132,12 +132,12 @@ $SP_FILE $COMMAND || exit 1
 
 cleanup
 
-echo
+echo "*****************************************************"
 if [ "$NEWFILE" != "" ]; then
 	echo "  STATICPERLRC=$NEWFILE $SP_FILE perl -v"
 else
 	echo "  $SP_FILE perl -v"
 fi
-echo
+echo "*****************************************************"
 
 exit 0

@@ -3,11 +3,20 @@
 # path where backups will be kept
 BACKUP_DIR="$HOME/backup/SP"
 
-. $HOME/.staticperlrc
+
+if [ -r $HOME/.staticperlrc ]; then
+	. $HOME/.staticperlrc
+else
+	echo "Could not find file $HOME/.staticperlrc"
+	exit 1
+fi
+
 
 PERL_DIR=$(basename ${STATICPERL})
-BACKUP_FILE="${BACKUP_DIR}/staticperl-$PERL_VERSION-$(date +%s).tar.gz"
-FILES_LIST="${BACKUP_DIR}/staticperl-$PERL_VERSION-$(date +%s).filelist.txt"
+FILE=$(echo $PERL_DIR | sed 's/^\.//')
+BACKUP_FILE="${BACKUP_DIR}/${FILE}-$(date +%s).tar.gz"
+FILES_LIST="${BACKUP_DIR}/${FILE}-$(date +%s).filelist.txt"
+
 
 tar -zcvpf ${BACKUP_FILE} \
     --directory=$HOME \
