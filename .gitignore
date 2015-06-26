@@ -1,3 +1,6 @@
+modules/*.tar.gz
+modules/*.orig
+misc/staticperlrc.my
 modules/Params-Validate-1.18/Params-Validate-1.18
 modules/Params-Validate-1.18/MYMETA.json
 modules/Params-Validate-1.18/MYMETA.yml
