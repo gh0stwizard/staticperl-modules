@@ -1,0 +1,156 @@
+do{ my $x = [
+       {
+         'ARGV' => []
+       },
+       {},
+       {
+         'PL_files' => undef,
+         '_added_to_INC' => [
+                              '/home/autarch/.perlbrew/libs/perl-5.22.0@dev/lib/perl5/x86_64-linux',
+                              '/home/autarch/.perlbrew/libs/perl-5.22.0@dev/lib/perl5'
+                            ],
+         '_have_c_compiler' => 1,
+         'allow_mb_mismatch' => 0,
+         'allow_pureperl' => 0,
+         'auto_configure_requires' => 1,
+         'autosplit' => undef,
+         'base_dir' => '/home/autarch/projects/DateTime.pm',
+         'bindoc_dirs' => [
+                            'blib/script'
+                          ],
+         'blib' => 'blib',
+         'build_bat' => 0,
+         'build_class' => 'Module::Build',
+         'build_elements' => [
+                               'PL',
+                               'support',
+                               'pm',
+                               'xs',
+                               'share_dir',
+                               'pod',
+                               'script'
+                             ],
+         'build_requires' => {
+                               'ExtUtils::CBuilder' => 0,
+                               'Module::Build' => '0.28'
+                             },
+         'build_script' => 'Build',
+         'bundle_inc' => [],
+         'bundle_inc_preload' => [],
+         'c_source' => 'c',
+         'config' => undef,
+         'config_dir' => '_build',
+         'configure_requires' => {
+                                   'Module::Build' => '0.28'
+                                 },
+         'conflicts' => {},
+         'cpan_client' => 'cpan',
+         'create_license' => undef,
+         'create_makefile_pl' => undef,
+         'create_packlist' => 1,
+         'create_readme' => undef,
+         'debug' => undef,
+         'debugger' => undef,
+         'destdir' => undef,
+         'dist_abstract' => 'A date and time object for Perl',
+         'dist_author' => [
+                            'Dave Rolsky <autarch@urth.org>'
+                          ],
+         'dist_name' => 'DateTime',
+         'dist_suffix' => undef,
+         'dist_version' => '1.19',
+         'dist_version_from' => undef,
+         'dynamic_config' => 1,
+         'extra_compiler_flags' => [],
+         'extra_linker_flags' => [],
+         'extra_manify_args' => undef,
+         'get_options' => {},
+         'has_config_data' => undef,
+         'html_css' => '',
+         'include_dirs' => [],
+         'install_base' => '/home/autarch/.perlbrew/libs/perl-5.22.0@dev',
+         'install_base_relpaths' => {},
+         'install_path' => {},
+         'install_sets' => {},
+         'installdirs' => 'site',
+         'libdoc_dirs' => [
+                            'blib/lib',
+                            'blib/arch'
+                          ],
+         'license' => 'artistic_2',
+         'magic_number' => undef,
+         'mb_version' => '0.4214',
+         'meta_add' => {},
+         'meta_merge' => {},
+         'metafile' => 'META.yml',
+         'metafile2' => 'META.json',
+         'module_name' => 'DateTime',
+         'mymetafile' => 'MYMETA.yml',
+         'mymetafile2' => 'MYMETA.json',
+         'needs_compiler' => 1,
+         'orig_dir' => '/home/autarch/projects/DateTime.pm',
+         'original_prefix' => {},
+         'perl' => '/home/autarch/perl5/perlbrew/perls/perl-5.22.0/bin/perl',
+         'pm_files' => undef,
+         'pod_files' => undef,
+         'pollute' => undef,
+         'prefix' => undef,
+         'prefix_relpaths' => {},
+         'prereq_action_types' => [
+                                    'requires',
+                                    'build_requires',
+                                    'test_requires',
+                                    'conflicts',
+                                    'recommends'
+                                  ],
+         'program_name' => undef,
+         'pureperl_only' => 0,
+         'quiet' => undef,
+         'recommends' => {},
+         'recurse_into' => [],
+         'recursive_test_files' => 1,
+         'release_status' => 'stable',
+         'requires' => {
+                         'Carp' => 0,
+                         'DateTime::Locale' => '0.41',
+                         'DateTime::TimeZone' => '1.74',
+                         'POSIX' => 0,
+                         'Params::Validate' => '0.76',
+                         'Scalar::Util' => 0,
+                         'Try::Tiny' => 0,
+                         'XSLoader' => 0,
+                         'base' => 0,
+                         'constant' => 0,
+                         'integer' => 0,
+                         'overload' => 0,
+                         'perl' => '5.008001',
+                         'strict' => 0,
+                         'vars' => 0,
+                         'warnings' => 0,
+                         'warnings::register' => 0
+                       },
+         'script_files' => [],
+         'scripts' => undef,
+         'share_dir' => undef,
+         'sign' => undef,
+         'tap_harness_args' => {},
+         'test_file_exts' => [
+                               '.t'
+                             ],
+         'test_files' => undef,
+         'test_requires' => {
+                              'ExtUtils::MakeMaker' => 0,
+                              'File::Spec' => 0,
+                              'Storable' => 0,
+                              'Test::Fatal' => 0,
+                              'Test::More' => '0.96',
+                              'Test::Warnings' => '0.005',
+                              'utf8' => 0
+                            },
+         'use_rcfile' => 1,
+         'use_tap_harness' => 0,
+         'verbose' => undef,
+         'xs_files' => undef
+       }
+     ];
+$x; }
