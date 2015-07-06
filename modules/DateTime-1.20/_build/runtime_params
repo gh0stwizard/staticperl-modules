@@ -1,4 +1,0 @@
-do{ my $x = {
-       'install_base' => '/home/autarch/.perlbrew/libs/perl-5.22.0@dev'
-     };
-$x; }
