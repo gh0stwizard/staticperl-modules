@@ -102,20 +102,20 @@ install_ae_fork() {
 
 	instcpan AnyEvent::Fork
 	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork.pm \
-		${GW_PATCHES}/AnyEvent-Fork/AnyEvent-Fork-0001.diff
+		${GW_PATCHES}/AnyEvent-Fork/0001-Fork.diff
 	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/Serve.pm \
-		${GW_PATCHES}/AnyEvent-Fork/AnyEvent-Fork-0002.diff
+		${GW_PATCHES}/AnyEvent-Fork/0002-Fork-Serve.diff
 
 	instcpan AnyEvent::Fork::RPC
 	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/RPC/Async.pm \
-		${GW_PATCHES}/AnyEvent-Fork-RPC/AnyEvent-Fork-RPC-0001.diff
+		${GW_PATCHES}/AnyEvent-Fork-RPC/0001-RPC-Async.diff
 	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/RPC/Sync.pm \
-		${GW_PATCHES}/AnyEvent-Fork-RPC/AnyEvent-Fork-RPC-0002.diff
+		${GW_PATCHES}/AnyEvent-Fork-RPC/0002-RPC-Sync.diff
 		
 	instcpan Array::Heap
 	instcpan AnyEvent::Fork::Pool
 	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/Pool.pm \
-		${GW_PATCHES}/AnyEvent-Fork-Pool/AnyEvent-Fork-Pool_01.diff
+		${GW_PATCHES}/AnyEvent-Fork-Pool/0001-Pool.diff
 }
 
 install_xml() {
