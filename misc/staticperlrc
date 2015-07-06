@@ -148,9 +148,10 @@ install_class_load() {
 	instcpan Data::OptList
 	instcpan namespace::clean
 
-	instsrc ${GW_MODULES}/Class-Load-0.22
+	# Class-Load 0.23 installs out of a box
+	instcpan Class::Load
 
-	# Class-Load-XS 0.09 installs out of box
+	# Class-Load-XS 0.09 installs out of a box
 	instcpan Class::Load::XS
 }
 
@@ -161,7 +162,8 @@ install_params_validate() {
 	# Params::Validate requirements
 	instcpan Module::Implementation
 	
-	instsrc ${GW_MODULES}/Params-Validate-1.18
+	# Params-Validate 1.20 install only PP implementation
+	instsrc ${GW_MODULES}/Params-Validate-1.20
 }
 
 install_datetime() {
@@ -172,7 +174,7 @@ install_datetime() {
 	instcpan List::AllUtils
 	instcpan DateTime::TimeZone
 
-	instsrc ${GW_MODULES}/DateTime-1.19
+	instsrc ${GW_MODULES}/DateTime-1.20
 }
 
 postinstall() {
