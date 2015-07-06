@@ -1,0 +1,65 @@
+{
+   "abstract" : "Validate method/function parameters",
+   "author" : [
+      "Dave Rolsky, <autarch@urth.org> and Ilya Martynov <ilya@martynov.org>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "ExtUtils::MakeMaker version 7.0401, CPAN::Meta::Converter version 2.150001",
+   "license" : [
+      "artistic_2"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Params-Validate",
+   "no_index" : {
+      "directory" : [
+         "t",
+         "inc"
+      ]
+   },
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Devel::Peek" : "0",
+            "ExtUtils::MakeMaker" : "0",
+            "File::Spec" : "0",
+            "File::Temp" : "0",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
+            "Test::Fatal" : "0",
+            "Test::More" : "0.96",
+            "Test::Requires" : "0",
+            "Tie::Array" : "0",
+            "Tie::Hash" : "0",
+            "base" : "0",
+            "lib" : "0",
+            "overload" : "0",
+            "perl" : "5.008001"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "ExtUtils::MakeMaker" : "0"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "Attribute::Handlers" : "0.79",
+            "Carp" : "0",
+            "Exporter" : "0",
+            "Module::Implementation" : "0",
+            "Scalar::Util" : "1.10",
+            "XSLoader" : "0",
+            "attributes" : "0",
+            "perl" : "5.008001",
+            "strict" : "0",
+            "vars" : "0",
+            "warnings" : "0"
+         }
+      }
+   },
+   "release_status" : "stable",
+   "version" : "1.20"
+}
