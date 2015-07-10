@@ -8,6 +8,7 @@ WriteMakefile(
     clean   => {'FILES' => 'libunqlite.a'},
     H       => [qw(unqlite.h $(PERL_INC)/config.h)],
     C       => [qw(unqlite.c)],
+    NO_MYMETA => 1,
 );
 
 sub MY::constants {
