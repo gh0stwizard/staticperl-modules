@@ -1,0 +1,10 @@
+comment: |
+
+    AnyEvent::Fork::RPC, version 1.21
+    Patchset for staticperl by gh0stwizard
+
+match:
+    distribution: "^MLEHMANN/AnyEvent-Fork-RPC-"
+patches:
+    - "AnyEvent-Fork-RPC/0001-RPC-Async.diff"
+    - "AnyEvent-Fork-RPC/0002-RPC-Sync.diff"

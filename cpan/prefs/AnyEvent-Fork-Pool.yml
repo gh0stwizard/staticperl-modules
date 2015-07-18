@@ -1,0 +1,9 @@
+comment: |
+
+    AnyEvent::Fork::Pool, version 1.2
+    Patchset for staticperl by gh0stwizard
+
+match:
+    distribution: "^MLEHMANN/AnyEvent-Fork-Pool-"
+patches:
+    - "AnyEvent-Fork-Pool/0001-Pool.diff"

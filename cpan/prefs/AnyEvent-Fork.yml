@@ -1,0 +1,10 @@
+comment: |
+
+    AnyEvent::Fork, version 1.2
+    Patchset for staticperl by gh0stwizard
+
+match:
+    distribution: "^MLEHMANN/AnyEvent-Fork-"
+patches:
+    - "AnyEvent-Fork/0001-Fork.diff"
+    - "AnyEvent-Fork/0002-Fork-Serve.diff"

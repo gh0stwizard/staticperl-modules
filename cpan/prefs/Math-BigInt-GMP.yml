@@ -1,0 +1,10 @@
+comment: |
+
+    Math::BigInt::GMP, version 1.38
+    Apply patch: https://rt.cpan.org/Public/Ticket/Attachment/1481298/789116
+    RT: https://rt.cpan.org/Public/Bug/Display.html?id=96113
+
+match:
+    distribution: "^PJACKLAM/Math-BigInt-GMP-1.38"
+patches:
+    - "Math-BigInt-GMP/0001-bigfltpm.inc.patch"
