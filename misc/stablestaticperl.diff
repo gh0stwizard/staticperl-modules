@@ -1,0 +1,106 @@
+--- staticperl-1.44	2015-07-18 13:04:41.000000000 +0300
++++ staticperl	2015-07-18 13:11:57.000000000 +0300
+@@ -15,6 +15,7 @@
+ PERL_CONFIGURE="" # additional Configure arguments
+ PERL_CCFLAGS="-g -DPERL_DISABLE_PMC -DPERL_ARENA_SIZE=16376 -DNO_PERL_MALLOC_ENV -D_GNU_SOURCE -DNDEBUG"
+ PERL_OPTIMIZE="-Os" # -Os -ffunction-sections -fdata-sections -finline-limit=8 -ffast-math"
++STABLEPERL_RELEASE="1.001"
+ 
+ ARCH="$(uname -m)"
+ 
+@@ -90,8 +91,8 @@
+ VERSION=VERSION; eval \
+ $VERSION="1.44"
+ 
+-BZ2=bz2
+-BZIP2=bzip2
++GUNZIP=gunzip
++GZ=gz
+ 
+ fatal() {
+    printf -- "\nFATAL: %s\n\n" "$*" >&2
+@@ -147,7 +148,7 @@
+ realclean() {
+    rm -f "$PERL_PREFIX/staticstamp.postinstall"
+    rm -f "$PERL_PREFIX/staticstamp.install"
+-   rm -f "$STATICPERL/src/perl-"*"/staticstamp.configure"
++   rm -f "$STATICPERL/src/stableperl-"*"/staticstamp.configure"
+ }
+ 
+ fetch() {
+@@ -156,16 +157,16 @@
+    mkdir -p src
+    rcd src
+ 
+-   if ! [ -d "perl-$PERL_VERSION" ]; then
+-      PERLTAR=perl-$PERL_VERSION.tar.$BZ2
++   if ! [ -d "stableperl-$PERL_VERSION-$STABLEPERL_RELEASE" ]; then
++      PERLTAR=stableperl-$PERL_VERSION-$STABLEPERL_RELEASE.tar.$GZ
+ 
+       if ! [ -e $PERLTAR ]; then
+-         URL="$CPAN/src/5.0/$PERLTAR"
+-
++         URL="http://stableperl.schmorp.de/dist/$PERLTAR"
++      
+          verblock <<EOF
+ downloading perl
+ to manually download perl yourself, place
+-perl-$PERL_VERSION.tar.$BZ2 in $STATICPERL
++perl-$PERL_VERSION-$STABLEPERL_RELEASE.tar.$GZ in $STATICPERL
+ trying $URL
+ 
+ either curl or wget is required for automatic download.
+@@ -194,11 +195,12 @@
+ EOF
+ 
+       mkdir -p unpack
+-      rm -rf unpack/perl-$PERL_VERSION
+-      $BZIP2 -d <$PERLTAR | ( cd unpack && tar xf - ) \
++      rm -rf unpack/stableperl-$PERL_VERSION-$STABLEPERL_RELEASE
++      $GUNZIP -d <$PERLTAR | ( cd unpack && tar xf - ) \
+          || fatal "$PERLTAR: error during unpacking"
+-      chmod -R u+w unpack/perl-$PERL_VERSION
+-      mv unpack/perl-$PERL_VERSION perl-$PERL_VERSION
++      chmod -R u+w unpack/stableperl-$PERL_VERSION-$STABLEPERL_RELEASE
++      mv unpack/stableperl-$PERL_VERSION-$STABLEPERL_RELEASE \
++         stableperl-$PERL_VERSION-$STABLEPERL_RELEASE
+       rmdir -p unpack
+    fi
+ }
+@@ -239,12 +241,12 @@
+ configure() {
+    fetch
+ 
+-   rcd "$STATICPERL/src/perl-$PERL_VERSION"
++   rcd "$STATICPERL/src/stableperl-$PERL_VERSION-$STABLEPERL_RELEASE"
+ 
+    [ -e staticstamp.configure ] && return
+ 
+    verblock <<EOF
+-configuring $STATICPERL/src/perl-$PERL_VERSION
++configuring $STATICPERL/src/stableperl-$PERL_VERSION-$STABLEPERL_RELEASE
+ EOF
+ 
+    rm -f "$PERL_PREFIX/staticstamp.install"
+@@ -326,10 +328,10 @@
+ build() {
+    configure
+ 
+-   rcd "$STATICPERL/src/perl-$PERL_VERSION"
++   rcd "$STATICPERL/src/stableperl-$PERL_VERSION-$STABLEPERL_RELEASE"
+ 
+    verblock <<EOF
+-building $STATICPERL/src/perl-$PERL_VERSION
++building $STATICPERL/src/stableperl-$PERL_VERSION-$STABLEPERL_RELEASE
+ EOF
+ 
+    rm -f "$PERL_PREFIX/staticstamp.install"
+@@ -356,7 +358,7 @@
+       build
+ 
+       verblock <<EOF
+-installing $STATICPERL/src/perl-$PERL_VERSION
++installing $STATICPERL/src/stableperl-$PERL_VERSION-$STABLEPERL_VERSION
+ to $PERL_PREFIX
+ EOF
+ 
