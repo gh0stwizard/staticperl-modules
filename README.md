@@ -22,7 +22,7 @@ I know. But I have not much experience to complete this task
 at the moment.
 
 
-How to use my modules?
+How to install a module?
 -------------------
 
 ```

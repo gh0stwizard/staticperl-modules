@@ -1,0 +1,11 @@
+comment: |
+
+    version.pm
+    Build XS version on update
+
+match:
+    distribution: "^JPEACOCK/version-"
+
+pl:
+    args:
+        - "--xs"
