@@ -1,0 +1,15 @@
+comment: |
+
+    Install additional modules for Net::SNMP
+    to use SNMPv3 out of a box
+
+match:
+    distribution: "^DTOWN/Net-SNMP-"
+
+depends:
+    requires:
+        Crypt::DES: 0
+        Digest::MD5: 0
+        Digest::SHA1: 0
+        Digest::HMAC: 0
+        Crypt::Rijndael: 0

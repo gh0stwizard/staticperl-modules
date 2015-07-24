@@ -1,3 +1,0 @@
-install HTTP::Parser HTTP::Parser::XS
-install EV Guard AnyEvent
-install Feersum
