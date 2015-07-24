@@ -26,7 +26,8 @@ How to use my modules?
 -------------------
 
 ```
-shell> ~/staticperl instsrc staticperl-modules/modules/My-Module
+shell> cd staticperl-modules
+shell> ~/staticperl instsrc modules/My-Module
 ```
 
 Patches
@@ -40,6 +41,8 @@ distributives and so on).
 
 How to use patches?
 -------------------
+
+* Manual
 
 ```
 # open cpan shell
@@ -62,6 +65,29 @@ shell> exit
 cpan > install My-Module
 ```
 
+* via CPAN + DistroPrefs
+
+[Documentation](http://search.cpan.org/perldoc?CPAN#Blueprint) 
+about CPAN's DistroPrefs .
+
+```
+# open CPAN shell
+shell> ~/staticperl cpan
+
+# install a YAML module, e.g.
+CPAN> install YAML::XS
+CPAN> o conf yaml_module YAML::XS
+CPAN> o conf patches_dir /path/to/staticperl-modules/patches
+CPAN> o conf prefs_dir /path/to/staticperl-modules/cpan/prefs
+
+# keep settings above persistent (optional)
+CPAN> o conf commit
+
+# install a module
+CPAN> install My-Module
+```
+
+
 Notes and documentation
 =======================
 
@@ -70,7 +96,7 @@ I should create issues in RT bug tracker for some of them.
 Instead of that I found out quick workarounds and post them
 into this repo.
 
-Many modules in CPAN have incorrect requirements. So you have to
+Some modules in CPAN have incorrect requirements. So you have to
 install required modules manually before installing 
 the target module.
 
@@ -83,17 +109,17 @@ What did you changed exactly?
 1. Replaced Build.PL with almost exactly the same Makefile.PL.
 2. Moved some \*.xs, \*.c, \*.h files to root directory (mostly). This
 is much easer then writing a lot of strings to configure Makefile.PL
-to find this files.
+to find these files.
 
-Why you did not posting issues to bug tracker, creating patches?
------------------------------------------------------------
+Why do you did not posting issues to RT tracker?
+------------------------------------------------
 
 * When I can -- I do this.
 * Some things is too complicated for me.
 * Sometimes I've not enough time to do this.
 
 Latest version of staticperl
-========================================
+============================
 
 Can be found [here](http://cvs.schmorp.de/App-Staticperl/bin/staticperl\?revision\=HEAD).
 
