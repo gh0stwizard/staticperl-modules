@@ -1,11 +1,10 @@
 # CPAN distroprefs
 
-Tested with next settings of CPAN, version 2.11 (perl 5.22.0):
+Tested with next settings of [CPAN][1], version 2.11 (perl 5.22.0):
 
-patch           /usr/bin/patch
+* <code>patch</code>: <code>/usr/bin/patch</code>
+* <code>yaml_module</code>: <code>YAML::XS</code>
+* <code>prefs_dir</code>: <code>/path/to/staticperl-modules/cpan/prefs</code>
+* <code>patches_dir</code>: <code>/path/to/staticperl-modules/patches</code>
 
-yaml_module     YAML::XS
-
-prefs_dir       /home/tvv/.stablestaticperl-5.22.0-1.001/cpan/prefs
-
-patches_dir     /home/tvv/dev/perl/staticperl-modules/patches
+[1]: http://search.cpan.org/perldoc?CPAN
