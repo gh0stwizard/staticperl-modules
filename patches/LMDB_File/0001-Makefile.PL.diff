@@ -1,0 +1,13 @@
+--- Makefile.PL.orig    2015-07-24 05:03:40.000000000 -0400
++++ Makefile.PL 2015-07-24 05:03:51.000000000 -0400
+@@ -3,10 +3,6 @@
+ use ExtUtils::MakeMaker;
+ use Config;
+
+-if($Config{archname} =~ /686/) {
+-    warn "liblmdb isn't supported in your platform, sorry.\n";
+-    exit 0;
+-}
+
+ my $LNAME = 'LMDB';
+ my $NAME = "${LNAME}_File";

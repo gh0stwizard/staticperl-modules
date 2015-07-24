@@ -1,0 +1,9 @@
+comment: |
+
+    LMBD_File, version 0.07[_4]
+    Allow builds on x86
+
+match:
+    distribution: "^SORTIZ/LMDB_File-0.07"
+patches:
+    - "LMDB_File/0001-Makefile.PL.diff"
