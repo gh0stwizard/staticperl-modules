@@ -73,7 +73,9 @@ install_anyevent() {
 	instcpan Guard
 
 	# < Optional >
-	# Net::SSLeay requires openssl-dev package installed in OS
+	# Net::SSLeay requires openssl-devel (libssl-dev) 
+	# package installed in OS
+	#
 	#instcpan Net::SSLeay
 	#instcpan Async::Interrupt
 
@@ -101,21 +103,9 @@ install_ae_fork() {
 	instcpan Proc::FastSpawn
 
 	instcpan AnyEvent::Fork
-	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork.pm \
-		${GW_PATCHES}/AnyEvent-Fork/0001-Fork.diff
-	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/Serve.pm \
-		${GW_PATCHES}/AnyEvent-Fork/0002-Fork-Serve.diff
-
 	instcpan AnyEvent::Fork::RPC
-	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/RPC/Async.pm \
-		${GW_PATCHES}/AnyEvent-Fork-RPC/0001-RPC-Async.diff
-	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/RPC/Sync.pm \
-		${GW_PATCHES}/AnyEvent-Fork-RPC/0002-RPC-Sync.diff
-		
 	instcpan Array::Heap
 	instcpan AnyEvent::Fork::Pool
-	patch -s ${PERL_PREFIX}/lib/AnyEvent/Fork/Pool.pm \
-		${GW_PATCHES}/AnyEvent-Fork-Pool/0001-Pool.diff
 }
 
 install_xml() {
@@ -158,10 +148,10 @@ install_class_load() {
 # requirement for DateTime
 install_params_validate() {
 	instsrc ${GW_MODULES}/Params-Classify-0.013
-	
+
 	# Params::Validate requirements
 	instcpan Module::Implementation
-	
+
 	# Params-Validate 1.20 install only PP implementation
 	instsrc ${GW_MODULES}/Params-Validate-1.20
 }
