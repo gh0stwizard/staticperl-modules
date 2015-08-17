@@ -1,0 +1,12 @@
+comment: |
+
+    Time::Moment, version 0.25
+    Patches for Solaris 10 (x86)
+
+match:
+    distribution: "^CHANSEN/Time-Moment-0.25"
+    perlconfig:
+        osname: "solaris"
+
+patches:
+    - "Time-Moment/0001-dt_config.h.diff"

@@ -1,0 +1,14 @@
+--- src/dt_config.h.orig	Mon Aug 17 14:23:41 2015
++++ src/dt_config.h	Mon Aug 17 14:24:57 2015
+@@ -26,9 +26,11 @@
+ #ifndef __DT_CONFIG_H__
+ #define __DT_CONFIG_H__
+ 
++#ifndef __sun__
+ #if !defined(_MSC_VER) || _MSC_VER >= 1800
+ #  include <stdbool.h>
+ #endif
++#endif
+ 
+ #if !defined(__cplusplus) && !defined(__bool_true_false_are_defined)
+    typedef char  _Bool;

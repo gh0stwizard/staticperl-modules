@@ -1,0 +1,12 @@
+comment: |
+
+    IO::AIO, version 4.32
+    Patches for Solaris 10 (x86)
+
+match:
+    distribution: "^MLEHMANN/IO-AIO-4.32"
+    perlconfig:
+        osname: "solaris"
+
+patches:
+    - "IO-AIO/0001-AIO.xs.diff"

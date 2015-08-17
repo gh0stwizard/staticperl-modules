@@ -1,0 +1,14 @@
+--- AIO.xs.orig	Mon Aug 17 16:26:29 2015
++++ AIO.xs	Mon Aug 17 16:27:02 2015
+@@ -159,9 +159,11 @@
+ # define minor(dev) ((dev) & 0xff)
+ #endif
+ 
++#ifndef __sun__
+ #if PAGESIZE <= 0
+ # define PAGESIZE sysconf (_SC_PAGESIZE)
+ #endif
++#endif
+ 
+ /*****************************************************************************/
+ 
