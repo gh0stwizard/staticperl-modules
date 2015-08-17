@@ -1,0 +1,197 @@
+#!/bin/bash
+
+# < Optional >
+# Might be useful for some modules like Feersum.
+#  Comment out the line below at the configure stage.
+#  Comment the line at the install stage.
+# See details at staticperl CPAN's page.
+###export PERL_LDFLAGS="-Wl,--no-gc-sections -Wl,--allow-multiple-definition"
+
+# Solaris 10 + CSW
+# $HOME/bin must contains symbolic links to /opt/csw/gnu/* programs:
+#  find, make, grep, sed, strip, tr.
+export PATH=$HOME/bin:$PATH
+###export LD_ALTEXEC=/opt/csw/gnu/ld
+###export LD_ALTEXEC=/usr/sfw/i386-sun-solaris2.10/bin/ld
+export PERL_CC="/usr/sfw/bin/gcc -B/usr/sfw/i386-sun-solaris2.10/bin/"
+
+# Your email address.
+# It will be inserted inside of the Perl binary file.
+# To see it type "~/staticperl perl -V".
+export EMAIL="stablestaticperl@example.com"
+
+# Where is perl source files will be kept (perl-VERSION.tar.bz2)
+export DLCACHE="$HOME/dl/source/perl"
+
+# A directory with patched modules by gh0stwizard
+GW_PATCHSET="$HOME/dev/perl/staticperl-modules"
+export GW_MODULES="${GW_PATCHSET}/modules"
+export GW_PATCHES="${GW_PATCHSET}/patches"
+unset GW_PATCHSET
+
+# Choose Perl version to install.
+# List of the Perl releases: http://www.cpan.org/src/README.html
+export PERL_VERSION="5.22.0"
+export STABLEPERL_RELEASE="1.001"
+
+# staticperl's directory with installed modules, scripts, etc.
+export STATICPERL="$HOME/.stablestaticperl-$PERL_VERSION-$STABLEPERL_RELEASE"
+
+# Some modules requires LIBHOME environment variable to be set correctly.
+export LIBHOME="$STATICPERL/lib/CORE"
+
+# Configuration flags while building Perl.
+# See installation instructions in Perl distribution for details.
+export PERL_CONFIGURE="-Duse64bitint -Duselargefiles -Dusenm"
+
+# Enable "ask questions" option of the CPAN shell.
+# Useful for some modules, e.g. EV, to configure & install them manually.
+#export PERL_MM_USE_DEFAULT=0
+
+# Optimization flags when building Perl.
+#export PERL_OPTIMIZE="-Os -ffunction-sections -fdata-sections -finline-limit=8 -mpush-args -mno-inline-stringops-dynamically -mno-align-stringops"
+
+# Linking against this libraries when building Perl.
+export PERL_LIBS="-lm -lcrypt -lsocket -lresolv -lnsl" 
+
+# DBD::Oracle (note for Solaris 10: InstantClient 11 seems to be broken)
+export LD_LIBRARY_PATH="$HOME/lib/instantclient_10_2"
+export ORACLE_HOME="$HOME/lib/instantclient_10_2"
+
+#export LD_LIBRARY_PATH="$HOME/lib/instantclient_12_1"
+#export ORACLE_HOME="$HOME/lib/instantclient_12_1"
+
+# DBD::Oracle additionals
+export ORACLE_USERID="tiger/scott"
+export ORACLE_SID="XBD"
+export DBI_DSN="dbi:Oracle:$ORACLE_SID"
+export TNS_ADMIN="/etc"
+
+#
+# Post installation functions.
+#
+# See postinstall() at the bottom of this file for details.
+#
+
+install_aio_ev() {
+	instcpan IO::AIO EV
+}
+
+install_json_xs() {
+	instcpan JSON::XS JSON
+}
+
+install_anyevent() {
+	instcpan Guard
+	
+	# < Optional >
+	# Net::SSLeay requires openssl-devel (libssl-dev) 
+	# package installed in OS
+	#
+	#instcpan Net::SSLeay
+	#instcpan Async::Interrupt
+
+	instcpan AnyEvent
+}
+
+install_coro() {
+	install_aio_ev
+	install_anyevent
+
+	instcpan BDB
+	instcpan AnyEvent::AIO
+	instcpan AnyEvent::BDB
+	instcpan Event
+	instcpan Coro
+}
+
+install_ae_fork() {
+	install_aio_ev
+	install_json_xs
+	install_anyevent
+
+	instcpan EV::Loop::Async
+	instcpan IO::FDPass
+	instcpan Proc::FastSpawn
+
+	instcpan AnyEvent::Fork
+	instcpan AnyEvent::Fork::RPC
+	instcpan Array::Heap
+	instcpan AnyEvent::Fork::Pool
+}
+
+install_xml() {
+	instcpan XML::NamespaceSupport
+	instcpan XML::SAX::Base
+	instcpan XML::SAX
+	instcpan XML::LibXML
+}
+
+install_feersum() {
+	install_aio_ev
+	install_json_xs
+	install_anyevent
+
+	instcpan Feersum
+}
+
+install_dbd_oracle() {
+	instcpan DBI
+	instcpan DBD::Oracle
+}
+
+# ??? requirement for one of dependence module of DateTime
+install_class_load() {
+	# Class::Load requirements
+	instcpan Try::Tiny
+	instcpan Module::Runtime
+	instcpan Module::Implementation
+	instcpan Package::Stash
+	instcpan Data::OptList
+	instcpan namespace::clean
+
+	instcpan Class::Load
+
+	# Class-Load-XS 0.09 installs out of box
+	instcpan Class::Load::XS
+}
+
+# requirement for DateTime
+install_params_validate() {
+	instsrc ${GW_MODULES}/Params-Classify-0.013
+
+	# Params::Validate requirements
+	instcpan Module::Implementation
+
+	instsrc ${GW_MODULES}/Params-Validate-1.20
+}
+
+install_datetime() {
+	install_class_load
+	install_params_validate
+
+	instcpan DateTime::Locale
+	instcpan List::AllUtils
+	instcpan DateTime::TimeZone
+
+	instsrc ${GW_MODULES}/DateTime-1.20
+}
+
+postinstall() {
+#
+# Comment out lines below if you wish to install these modules
+# at "~/staticperl install" stage.
+#
+
+#	instcpan YAML::XS
+
+#	install_aio_ev
+#	install_json_xs
+#	install_anyevent
+
+#	install_ae_fork
+#	install_feersum
+
+#	install_datetime
+	: ;
+}
