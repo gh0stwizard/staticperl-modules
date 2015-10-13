@@ -1,0 +1,12 @@
+--- t/13-pre-fork.t.orig	2015-10-13 22:58:01.000000000 +0300
++++ t/13-pre-fork.t	2015-10-13 22:58:32.000000000 +0300
+@@ -46,6 +46,9 @@
+     POSIX::exit(0);
+ }
+ 
++# wait a bit for Feersum daemon process
++sleep 2;
++
+ $cv = AE::cv;
+ simple_get($port, $_) for (1..CLIENTS);
+ $cv->recv;

@@ -1,3 +1,4 @@
 misc/staticperlrc.my
 modules/*.orig
 modules/*.tar.gz
+*~

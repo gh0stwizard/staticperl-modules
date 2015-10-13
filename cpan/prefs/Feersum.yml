@@ -1,0 +1,11 @@
+comment: |
+
+    Feersum 1.403
+    Patch for t/13-pre-fork.t:
+    * Add sleep(2) for slow devices.
+
+match:
+    distribution: "^AUDREYT/Feersum-1.403"
+
+patches:
+    - "Feersum/0001-13-pre-fork.t.diff"
