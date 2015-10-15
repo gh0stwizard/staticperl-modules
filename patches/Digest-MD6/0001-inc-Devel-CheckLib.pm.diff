@@ -1,0 +1,11 @@
+--- inc/Devel/CheckLib.pm.orig	2015-10-15 22:19:03.000000000 +0300
++++ inc/Devel/CheckLib.pm	2015-10-15 22:19:46.000000000 +0300
+@@ -161,7 +161,7 @@
+     # work-a-like for Makefile.PL's LIBS and INC arguments
+     # if given as command-line argument, append to %args
+     for my $arg (@ARGV) {
+-        for my $mm_attr_key qw(LIBS INC) {
++        for my $mm_attr_key ( qw(LIBS INC) ) {
+             if (my ($mm_attr_value) = $arg =~ /\A $mm_attr_key = (.*)/x) {
+             # it is tempting to put some \s* into the expression, but the
+             # MM command-line parser only accepts LIBS etc. followed by =,

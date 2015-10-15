@@ -1,0 +1,12 @@
+comment: |
+
+    Digest::MD6, version 0.11
+    * Fix issue for modern perl in inc/Devel/CheckLib.pm
+    * Fix test t/kat_mct.t when LWP::Simple is not installed
+
+match:
+    distribution: "^ANDYA/Digest-MD6-0.11"
+
+patches:
+    - "Digest-MD6/0001-inc-Devel-CheckLib.pm.diff"
+    - "Digest-MD6/0002-kat_mct.t.diff"

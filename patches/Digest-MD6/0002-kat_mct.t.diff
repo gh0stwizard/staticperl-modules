@@ -1,0 +1,19 @@
+--- t/kat_mct.t.orig	2015-10-15 22:20:23.000000000 +0300
++++ t/kat_mct.t	2015-10-15 22:29:54.000000000 +0300
+@@ -3,11 +3,14 @@
+ use strict;
+ use warnings;
+ 
++use Test::More;
++
+ use Digest::MD6;
+ use File::Spec;
+-use LWP::Simple qw( mirror is_success status_message $ua );
+ 
+-use Test::More;
++eval 'use LWP::Simple qw( mirror is_success status_message $ua )';
++plan skip_all => 'LWP::Simple required for this test' if $@;
++
+ 
+ plan skip_all => 'Set DIGEST_MD6_SLOW_TESTS to enable'
+  unless $ENV{DIGEST_MD6_SLOW_TESTS};
