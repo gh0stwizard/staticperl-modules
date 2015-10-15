@@ -3,7 +3,7 @@
 # path where backups will be kept
 BACKUP_DIR="$HOME/backup/SP"
 # tar utility filepath
-TAR="tar"
+TAR="/usr/pkg/bin/gtar"
 # staticperlrc file
 STATICPERLRC_FILE="$HOME/.staticperlrc"
 
@@ -33,11 +33,9 @@ if [ ! -d ${BACKUP_DIR} ]; then
 	echo "[ OK ]"
 fi
 
-HOME_DIR=$(cd ${PERL_DIR}/.. && pwd)
-
 # create an archive
 ${TAR} -zcvpf ${BACKUP_FILE} \
-    --directory=${HOME_DIR} \
+    --directory=${HOME} \
     --exclude="${PERL_DIR}/src/*" \
     --exclude="${PERL_DIR}/cpan/build/*" \
     --exclude="${PERL_DIR}/cpan/sources/*" \
