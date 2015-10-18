@@ -1,0 +1,10 @@
+comment: |
+
+    Async-Interrupt, version 1.21
+    * Fix issue in schmorp.h for Strawberry Perl on Win32
+
+match:
+    distribution: "^MLEHMANN/Async-Interrupt-1.2"
+
+patches:
+    - "Async-Interrupt/0001-schmorp.h-Win32.diff"
