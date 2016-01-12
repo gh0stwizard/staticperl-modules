@@ -3,7 +3,8 @@
 # path where backups will be kept
 BACKUP_DIR="$HOME/backup/SP"
 # tar utility filepath
-TAR="/usr/pkg/bin/gtar"
+TAR=tar
+#TAR="/usr/pkg/bin/gtar"
 # staticperlrc file
 STATICPERLRC_FILE="$HOME/.staticperlrc"
 
