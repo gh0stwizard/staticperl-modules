@@ -1,0 +1,15 @@
+comment: |
+
+    EV on Alpine Linux 3.xx must be compiled with -DEV_NO_ATFORK
+    Usage\: export ATFORK=1
+
+match:
+    distribution: "^MLEHMANN/EV-4."
+    perlconfig:
+        osname: "linux"
+    env:
+        ATFORK: "NO"
+
+pl:
+    args:
+        - "DEFINE=-DEV_NO_ATFORK"
