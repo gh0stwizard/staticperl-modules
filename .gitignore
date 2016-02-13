@@ -2,9 +2,13 @@ modules/*.tar.gz
 modules/*.orig
 misc/staticperlrc.my
 modules/Params-Validate-1.18/Params-Validate-1.18
-modules/Params-Validate-1.18/MYMETA.json
-modules/Params-Validate-1.18/MYMETA.yml
+modules/Params-Validate-1.18/MYMETA.*
 modules/Params-Validate-1.18/Makefile
-modules/Params-Validate-1.18/xs/MYMETA.json
-modules/Params-Validate-1.18/xs/MYMETA.yml
+modules/Params-Validate-1.18/Makefile.old
+modules/Params-Validate-1.18/xs/MYMETA.*
 modules/Params-Validate-1.18/xs/Makefile
+modules/Params-Validate-1.18/xs/Makefile.old
+modules/Params-Validate-1.20/Params-Validate-1.20
+modules/Config-Augeas-1.000/Makefile
+modules/Config-Augeas-1.000/Makefile.old
+modules/Config-Augeas-1.000/MYMETA.*
