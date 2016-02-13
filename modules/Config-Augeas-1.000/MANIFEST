@@ -1,0 +1,16 @@
+augeas-box/etc/hosts
+augeas-box/etc/ssh/ssh_config
+augeas-box/etc/ssh/sshd_config
+Augeas.xs
+ChangeLog
+lib/Config/Augeas.pm
+MANIFEST			This list of files
+MANIFEST.SKIP
+ppport.h
+README
+t/Config-Augeas.t
+t/Config-AugeasC.t
+t/pod.t
+typemap
+META.yml                                 Module YAML meta-data (added by MakeMaker)
+META.json                                Module JSON meta-data (added by MakeMaker)
