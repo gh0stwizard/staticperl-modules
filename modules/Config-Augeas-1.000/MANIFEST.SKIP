@@ -1,4 +1,5 @@
 Augeas.xs.orig
-Makefile
+^Makefile$
 Makefile.old
 ^MYMETA.*
+^Config-Augeas-
