@@ -4,6 +4,7 @@ augeas-box/etc/ssh/sshd_config
 Augeas.xs
 ChangeLog
 lib/Config/Augeas.pm
+Makefile.PL
 MANIFEST			This list of files
 MANIFEST.SKIP
 ppport.h
