@@ -1,0 +1,38 @@
+# Version control files and dirs.
+\bRCS\b
+\bCVS\b
+,v$
+\B\.svn\b
+\B\.git\b
+^.gitignore$
+
+# Makemaker generated files and dirs.
+^MANIFEST\.
+^Makefile$
+^Makefile.old$
+^blib/
+^MakeMaker-\d
+
+# Temp, old and emacs backup files.
+~$
+\.old$
+^#.*#$
+^\.#
+
+# distdir && [zip|tar]dist
+^HTML-Escape-
+
+# MYMETA
+^MYMETA\.
+
+# vim swp files
+\.swp$
+
+# shit
+^cpanfile$
+^dist.ini$
+^perlcriticrc$
+^perltidyrc$
+^tidyall.ini$
+^weaver.ini$
+^minil.toml$
