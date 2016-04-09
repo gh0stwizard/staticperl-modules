@@ -4,6 +4,7 @@
 ,v$
 \B\.svn\b
 \B\.git\b
+\B\.gitignore\b
 
 # Makemaker generated files and dirs.
 ^MANIFEST\.
@@ -29,7 +30,9 @@
 
 # xs sub dir
 ^xs/Makefile$
+^xs/Makefile\.old$
 ^xs/MYMETA\.
+^xs/.gitignore$
 
 # shit
 ^cpanfile$
