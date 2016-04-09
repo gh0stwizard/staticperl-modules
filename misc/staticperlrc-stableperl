@@ -152,7 +152,7 @@ install_params_validate() {
 	# Params::Validate requirements
 	instcpan Module::Implementation
 
-	instsrc ${GW_MODULES}/Params-Validate-1.22
+	instsrc ${GW_MODULES}/Params-Validate-1.23
 }
 
 install_datetime() {
