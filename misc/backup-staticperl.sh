@@ -55,6 +55,7 @@ ${TAR} -zcvpf ${BACKUP_FILE} \
     --exclude="${PERL_DIR}/cpan/sources/*" \
     --exclude="${PERL_DIR}/cache/*" \
     ${PERL_DIR} > ${FILES_LIST} \
+    2>&1 \
 || exit 1
 
 echo ">>> ${BACKUP_FILE}"

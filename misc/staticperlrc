@@ -153,7 +153,7 @@ install_params_validate() {
 	instcpan Module::Implementation
 
 	# Params-Validate 1.20 install only PP implementation
-	instsrc ${GW_MODULES}/Params-Validate-1.22
+	instsrc ${GW_MODULES}/Params-Validate-1.23
 }
 
 install_datetime() {
@@ -164,7 +164,8 @@ install_datetime() {
 	instcpan List::AllUtils
 	instcpan DateTime::TimeZone
 
-	instsrc ${GW_MODULES}/DateTime-1.24
+	# as DateTime-1.26 is using ExtUtils::MakeMaker
+	instcpan DateTime
 }
 
 postinstall() {
