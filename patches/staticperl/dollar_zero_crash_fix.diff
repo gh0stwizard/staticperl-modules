@@ -1,0 +1,16 @@
+--- staticperl.orig
++++ staticperl
+@@ -1691,12 +1691,12 @@
+   PL_exit_flags |= PERL_EXIT_DESTRUCT_END;
+ 
+   exitstatus = perl_parse (staticperl, staticperl_xs_init, argc + 3, args, environ);
+-  free (args);
+   if (!exitstatus)
+     perl_run (staticperl);
+ 
+   exitstatus = perl_destruct (staticperl);
+   perl_free (staticperl);
++  free (args);
+   PERL_SYS_TERM ();
+ 
+   return exitstatus;
