@@ -1,9 +1,10 @@
 comment: |
 
     AnyEvent::Fork::Pool, version 1.2
-    Patchset for staticperl by gh0stwizard
+    Alternative way to count ncpu
 
 match:
-    distribution: "^MLEHMANN/AnyEvent-Fork-Pool-"
+    distribution: "^MLEHMANN/AnyEvent-Fork-Pool-1.2."
+
 patches:
     - "AnyEvent-Fork-Pool/0001-Pool.diff"

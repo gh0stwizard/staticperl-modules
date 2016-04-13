@@ -1,10 +1,10 @@
 comment: |
 
     AnyEvent::Fork, version 1.2
-    Patchset for staticperl by gh0stwizard
+    Bugfix of RT #100561
 
 match:
-    distribution: "^MLEHMANN/AnyEvent-Fork-"
+    distribution: "^MLEHMANN/AnyEvent-Fork-1.2."
+
 patches:
-    - "AnyEvent-Fork/0001-Fork.diff"
-    - "AnyEvent-Fork/0002-Fork-Serve.diff"
+    - "AnyEvent-Fork/rt100561.diff"
