@@ -11,6 +11,13 @@ RC_FILE=${1:-$RC_FALL}
 SP_FILE="$HOME/staticperl"
 OURFILE="/tmp/staticperlrc-autoinstall"
 
+patch_staticperl() {
+	echo "Trying to patch staticperl ..."
+	echo "  Applying dollar_zero_crash_fix.diff"
+	patch --quiet --forward ${SP_FILE} \
+		../patches/staticperl/dollar_zero_crash_fix.diff
+	rm -f ${SP_FILE}.rej
+}
 
 get_rc() {
 	if [ -r $RC_FILE ]; then
@@ -70,6 +77,10 @@ checkstage() {
 			echo
 			echo "!!! Already installed?!"
 			echo
+			echo "NOTICE: to reinstall run:"
+			echo "% rm -rf ${STATICPERL}"
+			echo "% rm -f ${OURFILE}"
+			echo
 			exit 1
 		fi
 	else
@@ -120,6 +131,7 @@ else
 	backup
 fi
 
+patch_staticperl
 status
 sleep 5
 

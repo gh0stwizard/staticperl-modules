@@ -23,7 +23,7 @@ unset GW_PATCHSET
 
 # Choose Perl version to install.
 # List of the Perl releases: http://www.cpan.org/src/README.html
-export PERL_VERSION="5.22.0"
+export PERL_VERSION="5.22.4"
 
 # staticperl's directory with installed modules, scripts, etc.
 export STATICPERL="$HOME/.staticperl-$PERL_VERSION"
